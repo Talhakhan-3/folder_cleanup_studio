@@ -1,0 +1,19 @@
+services:
+  app:
+    build: .
+    container_name: folder-cleanup-app
+    ports:
+      - "8501:8501"
+    environment:
+      - FOLDER_CLEANUP_DRY_RUN=${FOLDER_CLEANUP_DRY_RUN:-true}
+      - FOLDER_CLEANUP_ARCHIVE_AGE_DAYS=${FOLDER_CLEANUP_ARCHIVE_AGE_DAYS:-180}
+      - FOLDER_CLEANUP_RENAME_PATTERN=${FOLDER_CLEANUP_RENAME_PATTERN:-{name}_{date}{ext}}
+      - FOLDER_CLEANUP_LOG_LEVEL=${FOLDER_CLEANUP_LOG_LEVEL:-INFO}
+      - FOLDER_CLEANUP_AUTH_ENABLED=${FOLDER_CLEANUP_AUTH_ENABLED:-true}
+      - FOLDER_CLEANUP_AUTH_USERNAME=${FOLDER_CLEANUP_AUTH_USERNAME:-admin}
+      - FOLDER_CLEANUP_AUTH_PASSWORD=${FOLDER_CLEANUP_AUTH_PASSWORD:-CleanupAdmin2026!}
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./config.json:/app/config.json
+    restart: unless-stopped

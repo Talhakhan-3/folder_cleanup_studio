@@ -1,0 +1,8 @@
+{
+  "name": "Folder Cleanup Tool",
+  "description": "Clean, deduplicate, rename, organize, and archive files effortlessly with visual preview and instant undo.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
